@@ -1,28 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="nav">
+      <!-- <router-link to="/">Home</router-link>
+      <router-link to="/about">About</router-link> -->
+      <!-- <router-link :to="{name: 'event-list'}">List</router-link>
+      <router-link to="/event/create">Create</router-link>  -->
+      <Nav/>
+    </div>
+    <hr/>
+
+    <!-- <router-view/> -->
+    <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <EventCard /> -->
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import EventCard from './components/EventCard.vue'
+//import HelloWorld from './components/HelloWorld.vue'
+import Nav from './components/Nav.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Nav
   }
 }
+// export default {
+//   name: 'app',
+//   components: {
+//     HelloWorld
+//   }
+// }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+@import 'src/assets/global.scss'
 </style>
