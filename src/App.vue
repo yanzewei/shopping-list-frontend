@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
       <!-- <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link> -->
       <!-- <router-link :to="{name: 'event-list'}">List</router-link>
       <router-link to="/event/create">Create</router-link>  -->
       <Nav/>
-    </div>
     <hr/>
+      <Product/>
 
     <!-- <router-view/> -->
     <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
@@ -20,11 +19,12 @@
 // import EventCard from './components/EventCard.vue'
 //import HelloWorld from './components/HelloWorld.vue'
 import Nav from './components/Nav.vue'
-
+import Product from './components/Product.vue'
 export default {
   name: 'app',
   components: {
-    Nav
+    Nav,
+    Product
   }
 }
 // export default {

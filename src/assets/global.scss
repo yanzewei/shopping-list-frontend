@@ -1,0 +1,35 @@
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+
+$color1: #0338bd;
+$color2: #bf00b9;
+
+nav {
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    .nav-btn {
+        margin-left: 25px;
+        border-radius: 8px;
+        padding: 16px;
+        font-weight: 900;
+    }
+}
+
+.blue-btn {
+    display: inline-block;
+    background-color: $color1;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+        text-decoration: none;
+        background-color: $color2;
+    }
+}
