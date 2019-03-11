@@ -16,13 +16,14 @@ nav {
     margin-right: 10px;
     .nav-btn {
         margin-left: 25px;
-        border-radius: 8px;
         padding: 16px;
         font-weight: 900;
+        color: white;
     }
 }
 
 .blue-btn {
+    border-radius: 8px;
     display: inline-block;
     background-color: $color1;
     color: white;
