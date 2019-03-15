@@ -1,7 +1,7 @@
 <template>
     <nav>
-        <router-link to="" class="nav-btn blue-btn">home</router-link>
-        <router-link to="" class="nav-btn blue-btn">shop list</router-link>
+        <router-link :to="{name: 'product-page'}" class="nav-btn blue-btn">home</router-link>
+        <router-link :to="{name: 'shop-list'}" class="nav-btn blue-btn">shop list</router-link>
     </nav>
 </template>
 
