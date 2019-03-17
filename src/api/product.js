@@ -3,10 +3,15 @@ import {chunk} from '../util';
 
 
 export default {
-    getProducts (cb) {
+    getProducts (cb, title) {
+      let url = "http://127.0.0.1:5000/api/product";
+      if(title != '')
+      {
+        url = url+'/'+title
+      }
       axios
       //.get("http://localhost:3000/products")
-      .get("http://127.0.0.1:5000/api/product")
+      .get(url)
       .then(response => {
         let products = {}
         for(let index in response.data.data){

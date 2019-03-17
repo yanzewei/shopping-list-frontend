@@ -9,7 +9,7 @@ export default new Router({
     mode: 'history',
     routes: [
         {
-            path: '/',
+            path: '/:title?',
             name: 'product-page',
             component: Product
         },
