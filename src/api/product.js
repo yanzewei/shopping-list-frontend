@@ -1,6 +1,4 @@
-import axios from 'axios'
-import {chunk} from '../util';
-
+import axios from 'axios';
 
 export default {
     getProducts (cb, title) {
@@ -13,11 +11,7 @@ export default {
       //.get("http://localhost:3000/products")
       .get(url)
       .then(response => {
-        let products = {}
-        for(let index in response.data.data){
-            products[index] = chunk(response.data.data[index], 3)
-        }
-        cb(products);
+        cb(response.data.data);
       })
       .catch(error => {
         console.log("There was an error:" + error.response);
