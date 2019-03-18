@@ -12,6 +12,17 @@ export default {
         });
     },
 
+    getShoppingQuantity(cb){
+        axios
+        .get("http://127.0.0.1:5000/api/shopquantity/1")
+        .then(response => {
+            cb(response.data.data.quantity);
+        })
+        .catch(error => {
+          console.log("There was an error:" + error.response);
+        });
+    },
+
     updateShoppingCart(cart, cb) {
         console.log(cart)
         axios

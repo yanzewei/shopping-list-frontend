@@ -10,10 +10,10 @@ const getters = {}
 
 // actions
 const actions = {
-    getAllProducts ({ commit }) {
+    getAllProducts ({ commit }, title) {
         product.getProducts(prods => {
             commit('setProducts', prods)
-        })
+        }, title)
     }
 }
 
@@ -21,6 +21,9 @@ const actions = {
 const mutations = {
     setProducts (state, products) {
         state.all = products
+    },
+    setProductsAdded (state, index) {
+        state.all[index].added = 1
     }
 }
 

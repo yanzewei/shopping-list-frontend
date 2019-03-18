@@ -9,6 +9,8 @@
 
 $color1: #0338bd;
 $color2: #bf00b9;
+$color3: #ffffff;
+$color4: #ff0000;
 
 nav {
     text-align: right;
@@ -18,7 +20,7 @@ nav {
         margin-left: 25px;
         padding: 16px;
         font-weight: 900;
-        color: white;
+        color: $color3;
     }
 }
 
@@ -26,7 +28,7 @@ nav {
     border-radius: 8px;
     display: inline-block;
     background-color: $color1;
-    color: white;
+    color: $color3;
     text-decoration: none;
     text-transform: uppercase;
     &:hover {
@@ -34,3 +36,20 @@ nav {
         background-color: $color2;
     }
 }
+
+.notification {
+    //padding: 15px 26px;
+    position: relative;
+    display: inline-block;
+
+
+    .badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background: $color4;
+        color: $color3;
+      }
+  }

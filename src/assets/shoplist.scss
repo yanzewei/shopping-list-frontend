@@ -1,0 +1,17 @@
+.quantity-group input {
+    width: 50px;
+    padding-left: 5px;
+}
+
+.delete-icon {
+    font-size: 1.6em;
+    color: red;
+    &:hover {
+        font-size: 1.8em;
+        color: rgb(255, 37, 37); 
+    }
+    &:active {
+        font-size: 1.4em;
+        color: red; 
+    }
+}

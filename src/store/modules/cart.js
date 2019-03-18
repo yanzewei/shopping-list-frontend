@@ -1,6 +1,7 @@
 import shop from "../../api/shop";
 const state = {
-  cartlist: []
+  cartlist: [],
+  quantity: 0
 };
 
 // getters
@@ -13,6 +14,11 @@ const actions = {
       commit("setCartlist", shopCart);
     });
   },
+  getQuantity({ commit }) {
+    shop.getShoppingQuantity(quantity => {
+      commit("setQuantity", quantity)
+    })
+  },
   updateCartList({ state, commit }, {uid, index, nums}) {
     let cart = {},
         item = state.cartlist[index]
@@ -22,6 +28,12 @@ const actions = {
     cart.nums = nums
     shop.updateShoppingCart(cart, num => {
       commit("updateCart", {index, num})
+      let quantity = 0
+      for(let i = 0; i < state.cartlist.length; i++)
+      {
+        quantity += parseInt(state.cartlist[i].num)
+      }
+      commit("setQuantity", quantity)
     }) 
   },
   removeItem ({ commit }, {uid, index}) {
@@ -31,6 +43,12 @@ const actions = {
     cart.uid = uid
     shop.removeShoppingCart(cart, ()=> {
       commit('removeCart', index)
+      let quantity = 0
+      for(let i = 0; i < state.cartlist.length; i++)
+      {
+        quantity += parseInt(state.cartlist[i].num)
+      }
+      commit("setQuantity", quantity)
     })
   },
   addItem ({ commit }, {uid, index, nums, key, remain_count}) {
@@ -40,7 +58,7 @@ const actions = {
     cart.uid = uid
     cart.nums = nums
     shop.addShoppingCart(cart, num => {
-      commit("addCart", {index, num})
+      commit("setQuantity", state.quantity+num)
     }) 
   }
 };
@@ -50,14 +68,14 @@ const mutations = {
   setCartlist(state, cartlist) {
     state.cartlist = cartlist;
   },
+  setQuantity(state, quantity) {
+    state.quantity = quantity
+  },
   updateCart(state, {index, num}) {
     state.cartlist[index].num = num
   },
   removeCart(state, index){
     state.cartlist.splice(index, 1)
-  },
-  addCart(state, {index, num}) {
-    state.cartlist[index].num = state.cartlist[index].num + num
   }
 };
 

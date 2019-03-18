@@ -26,3 +26,20 @@
         text-transform: uppercase;
     }
 }
+
+.state-badge {
+    margin-left: 10px;
+}
+
+.add-icon {
+    font-size: 1.6em;
+    color: green;
+    &:hover {
+        font-size: 1.8em;
+        color: rgb(2, 92, 2); 
+    }
+    &:active {
+        font-size: 1.4em;
+        color: green; 
+    }
+}

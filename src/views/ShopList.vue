@@ -1,14 +1,14 @@
 <template>
     <div class="container">
-        <h1>Shop Cart</h1>
-        <table class="table table-hover table-condensed">
+        <h1>Shopping Cart</h1>
+        <table class="table table-hover table-condensed d-lg-table d-none">
             <thead>
                 <tr>
                     <th style="width:40%" class="align-middle">Product</th>
                     <th style="width:20%" class="align-middle">Price</th>
                     <th style="width:8%" class="align-middle">Quantity</th>
                     <th style="width:22%" class="align-middle">Subtotal</th>
-                    <th style="width:10%" class="align-middle">Operate</th>
+                    <th style="width:10%" class="align-middle"></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,13 +23,15 @@
                             </div>
                         </div>  
                     </th>
-                    <th class="align-middle">${{ cart.price }}</th>
+                    <th class="align-middle">$ {{ cart.price }}</th>
                     <th class="align-middle">
-                        <input type="text" pattern="\d*" maxlength="3" v-model="cart.num" />
-                        <button @click="update(`${index}`, `${cart.num}`)">update</button>
+                        <div class="d-flex quantity-group">
+                            <input type="text" pattern="\d*" maxlength="3" v-model="cart.num" />
+                            <button @click="update(`${index}`, `${cart.num}`)">update</button>
+                        </div>
                     </th>
-                    <th class="align-middle">${{ cart.num*cart.price }}</th>
-                    <th class="align-middle"><button @click="remove(`${index}`)">remove</button></th>
+                    <th class="align-middle">$ {{ cart.num*cart.price }}</th>
+                    <th class="align-middle"><a @click="remove(`${index}`)"><i class="fas fa-trash-alt delete-icon"></i></a></th>
                 </tr>
             </tbody>
             <tfoot>
@@ -38,7 +40,9 @@
         </table>
     </div>
 </template>
-
+<style lang="scss" scoped >
+@import "src/assets/shoplist.scss";
+</style>
 <script>
 import {isEmptyObject} from '../../src/util.js';
 import { mapState, mapActions } from 'vuex'
@@ -67,7 +71,3 @@ import { mapState, mapActions } from 'vuex'
         }
     }
 </script>
-
-<style scoped>
-
-</style>
