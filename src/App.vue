@@ -1,7 +1,9 @@
 <template>
-  <div class="container-fluid" id="app">
+  <div>
     <Nav/>
-    <router-view/>
+    <div class="container-fluid" id="app">
+      <router-view  :key="$route.fullPath"/>
+    </div>
   </div>
 </template>
 
