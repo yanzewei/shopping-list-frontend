@@ -24,11 +24,9 @@ export default {
     },
 
     updateShoppingCart(cart, cb) {
-        console.log(cart)
         axios
         .put("http://127.0.0.1:5000/api/shoplist", cart)
         .then(response => {
-            console.log(response)
             cb(cart.nums)
         })
         .catch(error => {
@@ -37,7 +35,6 @@ export default {
     },
     
     removeShoppingCart(cart, cb) {
-        console.log(cart)
         axios
         .delete("http://127.0.0.1:5000/api/shoplist", { data: cart })
         .then(response => {
@@ -54,11 +51,14 @@ export default {
         axios
         .post("http://127.0.0.1:5000/api/shoplist", cart)
         .then(response => {
-            console.log(response)
-            cb(cart.nums)
+            cb(response.status)
         })
         .catch(error => {
-            console.log("There was an error:" + error.response);
+            if(typeof(error.response)!='undefined')
+            {
+                cb(error.response.status)
+                console.log(error.response)
+            }
         });
     }
 }

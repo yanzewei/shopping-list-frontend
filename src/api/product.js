@@ -8,7 +8,6 @@ export default {
         url = url+'/'+title
       }
       axios
-      //.get("http://localhost:3000/products")
       .get(url)
       .then(response => {
         cb(response.data.data);
