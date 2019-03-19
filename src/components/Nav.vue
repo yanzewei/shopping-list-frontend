@@ -16,9 +16,9 @@
           </b-navbar-nav>
           <div class="d-block d-md-none">
             <b-navbar-nav>
-              <router-link :to="{name: 'product-page'}" class=" ml-auto">home</router-link>
+              <router-link :to="{name: 'product-page'}" class=" ml-auto">HOME</router-link>
               <router-link :to="{name: 'shop-list'}" class=" ml-auto notification">
-                <i class="fas fa-shopping-cart"></i> cart
+                <i class="fas fa-shopping-cart"></i> CART
                 <span v-if="quantity>0" class="badge">{{ quantity }}</span>
               </router-link>
             </b-navbar-nav>

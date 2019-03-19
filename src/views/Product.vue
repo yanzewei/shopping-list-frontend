@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mt-3 " v-for="(product_arr, index) in products" :key="`${index}`">
+    <div class="container mt-3 " v-for="(product_arr, index) in products" :key="`${index}`" v-show="product_arr.length>0">
       <div>
         <h1>{{index}}</h1>
         <hr/>
@@ -15,8 +15,20 @@
               >
                 <b-card-text>${{ prod.price }}</b-card-text>
                 <b-card-text>remain: {{ prod.remain_count }}</b-card-text>
-                <b-card-text @click="add(`${index}`, 1, `${prod.category}-${prod.id}`, `${prod.remain_count}`)" class="add-icon mb-2"><a><i class="fas fa-cart-plus"></i></a></b-card-text>
-                <b-badge v-if="k%2==0" variant="info" class="state-badge"><b-card-text>Exceed the stock number</b-card-text></b-badge>
+                <b-card-text @click="add( 1, `${prod.category}-${prod.id}`, `${prod.remain_count}`)" class="add-icon mb-2">
+                  <a v-if="index in status && status[index] == 1">
+                    <i class="fas fa-cart-plus"><b-spinner small/></i>
+                  </a>
+                  <a v-else>
+                    <i class="fas fa-cart-plus"></i>
+                  </a>
+                </b-card-text>
+                <div v-if="`${prod.category}-${prod.id}` in status && status[`${prod.category}-${prod.id}`] == 3">
+                  <b-badge  variant="info" class="state-badge"><b-card-text>Exceed the stock number</b-card-text></b-badge>
+                </div>
+                <div v-else-if="`${prod.category}-${prod.id}` in status && status[`${prod.category}-${prod.id}`] == 4">
+                  <b-badge variant="success" class="state-badge"><b-card-text>Success Add To The Cart</b-card-text></b-badge>
+                </div>
                   <!-- <b-alert variant="success" show   >Success Add To The Cart</b-alert> -->
                 <!-- <b-badge variant="danger">Exceed the stock number</b-badge>
                 <b-badge variant="success">Success</b-badge> -->  
@@ -25,6 +37,14 @@
           </div>
       </div>
     </div>
+    <!-- <div class="container" v-show="products.length == 0"> -->
+ 
+      
+    <div class="empty-result" v-show="Object.keys(products).length == 0">
+      <p class="lead">Sorry. The product is not found.</p>
+    </div>
+      
+    <!-- </div> -->
   </div>
 </template>
 
@@ -35,18 +55,21 @@
 <script>
 
 import { mapState } from 'vuex'
-
+import { isEmptyObject } from "../../src/util.js";
 export default {
   computed: mapState({
-    products: state => state.products.all
+    products: state => state.products.all,
+    status: state => state.cart.status
   }),
   created() {
     this.$store.dispatch('products/getAllProducts', this.$route.params.title === undefined ? '' : this.$route.params.title)
   },
   methods: {
-    add: function(index, nums, key, remain_count){
+    add: function( nums, key, remain_count){
       let uid = 1
-      this.$store.dispatch('cart/addItem', {uid, index, nums, key, remain_count})
+      
+      this.$store.dispatch('cart/addItem', {uid,  nums, key, remain_count})
+      
     }
   }
 };
