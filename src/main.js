@@ -3,10 +3,10 @@ import App from './App.vue'
 import router from "./router"
 import BootstrapVue from 'bootstrap-vue'
 import store from './store/index'
-import vueCookie from 'vue-cookie'
+import VModal from 'vue-js-modal'
 
+Vue.use(VModal, { dialog: true })
 Vue.use(BootstrapVue)
-Vue.use(vueCookie)
 
 Vue.config.productionTip = false
 
