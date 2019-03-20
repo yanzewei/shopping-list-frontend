@@ -2,7 +2,9 @@ import axios from 'axios';
 
 export default {
     getProducts (cb, title) {
-      let url = "http://127.0.0.1:5000/api/product";
+      console.log(process.env.VUE_APP_HOSTNAME, process.env)
+
+      let url = process.env.VUE_APP_HOSTNAME+"/api/product";
       if(title != '')
       {
         url = url+'/'+title

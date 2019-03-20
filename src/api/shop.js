@@ -3,7 +3,7 @@ import axios from 'axios'
 export default {
     getShoppingCart(cb) {
         axios
-        .get("http://127.0.0.1:5000/api/shoplist/1")
+        .get(process.env.VUE_APP_HOSTNAME+"/api/shoplist/1")
         .then(response => {
             cb(response.data.data);
         })
@@ -14,7 +14,7 @@ export default {
 
     getShoppingQuantity(cb){
         axios
-        .get("http://127.0.0.1:5000/api/shopquantity/1")
+        .get(process.env.VUE_APP_HOSTNAME+"/api/shopquantity/1")
         .then(response => {
             cb(response.data.data.quantity);
         })
@@ -25,7 +25,7 @@ export default {
 
     updateShoppingCart(cart, cb) {
         axios
-        .put("http://127.0.0.1:5000/api/shoplist", cart)
+        .put(process.env.VUE_APP_HOSTNAME+"/api/shoplist", cart)
         .then(response => {
             cb(cart.nums)
         })
@@ -36,7 +36,7 @@ export default {
     
     removeShoppingCart(cart, cb) {
         axios
-        .delete("http://127.0.0.1:5000/api/shoplist", { data: cart })
+        .delete(process.env.VUE_APP_HOSTNAME+"/api/shoplist", { data: cart })
         .then(response => {
             console.log(response)
             cb()
@@ -49,7 +49,7 @@ export default {
     addShoppingCart(cart, cb) {
         console.log(cart)
         axios
-        .post("http://127.0.0.1:5000/api/shoplist", cart)
+        .post(process.env.VUE_APP_HOSTNAME+"/api/shoplist", cart)
         .then(response => {
             cb(response.status)
         })
