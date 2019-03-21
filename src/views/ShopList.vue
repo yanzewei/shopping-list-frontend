@@ -36,6 +36,7 @@
                 type="number"
                 max="99"
                 min="1"
+                pattern="\d*"
                 :id="index"
                 :value="cart.num"
                 @input="editQuantity"
@@ -48,7 +49,7 @@
                     <b-spinner small/>
                   </i>
                 </span>
-                <span v-else-if="index in status && status[index] == 2">
+                <span v-else-if="index in status &&  status[index] == 2">
                   <i class="far fa-save alert-update-icon"></i>
                 </span>
                 <span v-else>
@@ -101,57 +102,13 @@ export default {
       subtotal: state => state.cart.subtotal,
       status: state => state.cart.status
     })
-    // cartlist: {
-    //     get () {
-    //         return this.$store.state.cart.cartlist
-    //     },
-
-    //     set () {
-    //         alert(2)
-    //         //this.$store.commit('updateMessage', value)
-    //     }
-    // }
-    // ...mapMultiRowFields([
-    //     'cartlist'
-    // ])
-    // cartlist: {
-    //     get () {
-    //         return this.$store.state.cart.cartlist
-    //     },
-    //     set () {
-    //         alert(1)
-    //     }
-    // },
-    // cart: {
-    //     get(){
-    //         return this.$store.state.cart.cartlist
-    //     },
-    //     set () {
-    //         alert(2)
-    //         //return this.$store.state.cart.cartlist[this.key]
-    //     }
-    // }
-    // ,
-    // subtotal: {
-    //     get() {
-    //         return 1
-    //     }
-    // }
-    // cartnum: {
-    //     get () {
-    //         return this.$store.state.cart
-    //     },
-    //     set (value) {
-    //         this.$store.commit('updateMessage', value)
-    //     }
-    // }
   },
   methods: {
     checkQuantity: function(index, num, remain_count) {
       if (isNaN(num)) {
         return 0;
       }
-      console.log(remain_count, num, remain_count < num, typeof(remain_count), typeof(num))
+      // console.log(remain_count, num, remain_count < num, typeof(remain_count), typeof(num))
       if (parseInt(remain_count) < parseInt(num)) {
         this.$modal.show("dialog", {
           title: "Alert!",
@@ -186,7 +143,6 @@ export default {
           num: num
         });
       }
-      //alert(1)
     },
     remove: function(index) {
       if (!isEmptyObject(this.cartlist)) {

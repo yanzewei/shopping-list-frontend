@@ -1,4 +1,6 @@
 import shop from "../../api/shop";
+import Vue from 'vue'
+
 
 const state = {
   cartlist: [],
@@ -46,9 +48,9 @@ const actions = {
     cart.uid = uid
     cart.nums = nums
 
-    commit('setUpdateStatus', {index, status:1})
+    commit('setUpdateStatus', {index:index, status:1})
     shop.updateShoppingCart(cart, num => {
-      commit('setUpdateStatus', {index, status:0})
+      commit('setUpdateStatus', {index:index, status:0})
     }) 
   },
 
@@ -97,7 +99,7 @@ const actions = {
     commit("setQuantity", quantity)
     commit('setSubtotal', subtotal)
     commit("updateCart", {index, num})
-    commit('setUpdateStatus', {index, status:2})
+    commit('setUpdateStatus', {index:index, status:2})
   }
 };
 
@@ -114,13 +116,13 @@ const mutations = {
   },
   removeCart(state, index){
     state.cartlist.splice(index, 1)
+    state.status.splice(index,1)
   },
   setSubtotal(state, subtotal) {
     state.subtotal = subtotal
   },
   setUpdateStatus(state, {index, status}){
-    state.status.splice(index, 1)
-    state.status[index] = status
+    Vue.set(state.status, index, status)
   }
 };
 
