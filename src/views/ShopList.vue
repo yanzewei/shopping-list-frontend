@@ -85,7 +85,7 @@
 </template>
 
 <style lang="scss" scoped >
-@import "src/assets/shoplist.scss";
+@import "src/styles/shoplist.scss";
 </style>
 <script>
 import { isEmptyObject } from "../../src/util.js";

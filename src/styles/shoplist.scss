@@ -1,0 +1,36 @@
+.quantity-group input {
+    width: 50px;
+    padding-left: 5px;
+}
+
+@mixin icon($color, $hover-color) {
+    font-size: 1.6em;
+    color: $color;
+    &:hover {
+        font-size: 1.8em;
+        color: $hover-color; 
+    }
+    &:active {
+        font-size: 1.4em;
+        color: $color; 
+    }
+}
+
+.delete-icon {
+    @include icon(red, rgb(255, 37, 37));
+}
+
+
+
+.update-icon {
+    @include icon(rgb(113, 187, 236), rgb(42, 156, 231));
+}
+
+.alert-update-icon {
+    @include icon(yellow, rgb(216, 216, 32));
+}
+
+.product-name {
+    padding-top: 39px;
+}
+

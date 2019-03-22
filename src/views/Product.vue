@@ -49,7 +49,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import "src/assets/product.scss";
+@import "src/styles/product.scss";
 </style>
 
 <script>
