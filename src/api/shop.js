@@ -8,7 +8,7 @@ export default {
             cb(response.data.data);
         })
         .catch(error => {
-          console.log("There was an error:" + error.response);
+          console.log(error.response);
         });
     },
 
@@ -19,18 +19,21 @@ export default {
             cb(response.data.data.quantity);
         })
         .catch(error => {
-          console.log("There was an error:" + error.response);
+          console.log(error.response);
         });
     },
 
     updateShoppingCart(cart, cb) {
         axios
-        .put(process.env.VUE_APP_HOSTNAME+"/api/shoplist", cart)
+        .put(
+            process.env.VUE_APP_HOSTNAME+"/api/shoplist",
+            cart
+        )
         .then(response => {
             cb(cart.nums)
         })
         .catch(error => {
-            console.log("There was an error:" + error.response);
+            console.log(error.response);
         });
     },
     
@@ -38,16 +41,14 @@ export default {
         axios
         .delete(process.env.VUE_APP_HOSTNAME+"/api/shoplist", { data: cart })
         .then(response => {
-            console.log(response)
             cb()
         })
         .catch(error => {
-            console.log("There was an error:" + error.response);
+            console.log(error.response);
         });
     },
     
     addShoppingCart(cart, cb) {
-        console.log(cart)
         axios
         .post(process.env.VUE_APP_HOSTNAME+"/api/shoplist", cart)
         .then(response => {

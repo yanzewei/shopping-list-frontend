@@ -21,9 +21,6 @@ const actions = {
 const mutations = {
     setProducts (state, products) {
         state.all = products
-    },
-    setProductsAdded (state, index) {
-        state.all[index].added = 1
     }
 }
 

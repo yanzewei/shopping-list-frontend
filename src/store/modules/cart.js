@@ -22,6 +22,7 @@ const actions = {
           quantity = 0
       for(let index in shopCart)
       {
+        //when enter the cart list will check the items' remain_count again
         if(shopCart[index].num > shopCart[index].remain_count)
         {
           commit("updateCart", {index, num:shopCart[index].remain_count})
@@ -75,7 +76,7 @@ const actions = {
     cart.remain_count = remain_count 
     cart.uid = uid
     cart.nums = nums
-    
+    commit('setUpdateStatus', {index:key, status:1})
     shop.addShoppingCart(cart, httpcode => {
       if(httpcode == 201)
       {
@@ -84,7 +85,7 @@ const actions = {
         
         commit('setUpdateStatus', {index:key, status:4})
         
-      }
+        }
       if(httpcode == 400)
       {
         commit('setUpdateStatus', {index:key, status:3})
