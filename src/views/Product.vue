@@ -29,22 +29,17 @@
                 <div v-else-if="`${prod.category}-${prod.id}` in status && status[`${prod.category}-${prod.id}`] == 4">
                   <b-badge variant="success" class="state-badge"><b-card-text>Success Add To The Cart</b-card-text></b-badge>
                 </div>
-                  <!-- <b-alert variant="success" show   >Success Add To The Cart</b-alert> -->
-                <!-- <b-badge variant="danger">Exceed the stock number</b-badge>
-                <b-badge variant="success">Success</b-badge> -->  
               </b-card>
             </div>
           </div>
       </div>
     </div>
-    <!-- <div class="container" v-show="products.length == 0"> -->
  
       
     <div class="empty-result" v-show="Object.keys(products).length == 0">
       <p class="lead">Sorry. The product is not found.</p>
     </div>
       
-    <!-- </div> -->
   </div>
 </template>
 
@@ -67,9 +62,7 @@ export default {
   methods: {
     add: function( nums, key, remain_count){
       let uid = 1
-      
       this.$store.dispatch('cart/addItem', {uid,  nums, key, remain_count})
-      
     }
   }
 };

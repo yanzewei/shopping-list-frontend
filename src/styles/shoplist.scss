@@ -20,8 +20,6 @@
     @include icon(red, rgb(255, 37, 37));
 }
 
-
-
 .update-icon {
     @include icon(rgb(113, 187, 236), rgb(42, 156, 231));
 }
@@ -34,3 +32,10 @@
     padding-top: 39px;
 }
 
+.width-4 {
+    width: 40%;
+}
+
+.width-2 {
+    width: 20%;
+}

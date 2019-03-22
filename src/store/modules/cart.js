@@ -6,7 +6,15 @@ const state = {
   cartlist: [],
   quantity: 0,
   subtotal: 0,
-  status: []
+  /*
+    status vaules:
+    0 for initial state;
+    1 for waiting for response; 
+    2 for edited status;
+    3 for exceed the stock limit;
+    4 for success added.
+  */
+  status: [] 
 };
 
 // getters

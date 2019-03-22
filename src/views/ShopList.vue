@@ -1,15 +1,13 @@
 <template>
   <div class="container">
     <h1>Shopping Cart</h1>
-    <!-- d-md-table d-none -->
     <table class="table table-hover table-condensed">
       <thead>
         <tr>
-          <th style="width:40%" class="align-middle">Product</th>
-          <th style="width:20%" class="align-middle">CDN$</th>
-          <th style="width:20%" class="align-middle">Quantity</th>
-          <!-- <th style="width:22%" class="align-middle">Subtotal</th> -->
-          <th style="width:20%" class="align-middle"></th>
+          <th class="align-middle width-4">Product</th>
+          <th class="align-middle width-2">CDN$</th>
+          <th class="align-middle width-2">Quantity</th>
+          <th class="align-middle width-2"></th>
         </tr>
       </thead>
       <tbody>
@@ -31,7 +29,6 @@
           <th class="align-middle">{{ cart.price }}</th>
           <th class="align-middle">
             <div class="d-flex quantity-group">
-              <!-- <input type="text"  maxlength="3" :key="index" v-model="cart.num" /> -->
               <input
                 type="number"
                 max="99"
@@ -41,8 +38,6 @@
                 :value="cart.num"
                 @input="editQuantity"
               >
-
-              <!-- @input="editQuantity(`${index}`, `${cart.num}`)"  -->
               <a @click="update(`${index}`, `${cart.num}`, `${cart.remain_count}`)">
                 <span v-if="index in status && status[index] == 1">
                   <i class="far fa-save update-icon">
@@ -58,7 +53,6 @@
               </a>
             </div>
           </th>
-          <!-- <th class="align-middle">$ {{ cart.num * cart.price }}</th> -->
           <th class="align-middle">
             <a @click="remove(`${index}`)">
               <i class="fas fa-trash-alt delete-icon"></i>
@@ -69,8 +63,6 @@
       <tfoot>
         <tr>
           <td colspan="2" class="hidden-xs"></td>
-          <!-- <td class="hidden-xs text-center"><strong>Total $1.99</strong></td> -->
-          <!-- <td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td> -->
           <td class="hidden-xs text-center">
             <strong>Subtotal ({{ quantity }} items):</strong>
           </td>
@@ -104,11 +96,11 @@ export default {
     })
   },
   methods: {
+    //return: 0(fail) 1(pass)
     checkQuantity: function(index, num, remain_count) {
       if (isNaN(num)) {
         return 0;
       }
-      // console.log(remain_count, num, remain_count < num, typeof(remain_count), typeof(num))
       if (parseInt(remain_count) < parseInt(num)) {
         this.$modal.show("dialog", {
           title: "Alert!",
