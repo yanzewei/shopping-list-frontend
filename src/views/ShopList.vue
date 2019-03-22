@@ -80,12 +80,12 @@
 @import "src/styles/shoplist.scss";
 </style>
 <script>
-import { isEmptyObject } from "../../src/util.js";
-import { mapState, mapActions } from "vuex";
+import { isEmptyObject } from "../../src/util.js"
+import { mapState } from "vuex"
 
 export default {
   created() {
-    this.$store.dispatch("cart/getCartList");
+    this.$store.dispatch("cart/getCartList")
   },
   computed: {
     ...mapState({
@@ -99,7 +99,7 @@ export default {
     //return: 0(fail) 1(pass)
     checkQuantity: function(index, num, remain_count) {
       if (isNaN(num)) {
-        return 0;
+        return 0
       }
       if (parseInt(remain_count) < parseInt(num)) {
         this.$modal.show("dialog", {
@@ -110,22 +110,25 @@ export default {
               title: "Close"
             }
           ]
-        });
+        })
+
         this.$store.dispatch("cart/editCart", {
           index: index,
           num: parseInt(remain_count)
-        });
-        return 0;
+        })
+
+        return 0
       }
-      return 1;
+
+      return 1
     },
 
     editQuantity: function(e) {
-      let num;
+      let num = 0
       if (e.target.value.length > 2) {
         num = e.target.value.slice(0, 2)
       } else if (e.target.value < 0) {
-        num = 1;
+        num = 1
       } else {
         num = e.target.value
       }
@@ -133,25 +136,25 @@ export default {
         this.$store.dispatch("cart/editCart", {
           index: e.target.id,
           num: num
-        });
+        })
       }
     },
     remove: function(index) {
       if (!isEmptyObject(this.cartlist)) {
-        let uid = 1;
-        this.$store.dispatch("cart/removeItem", { uid, index });
+        let uid = 1
+        this.$store.dispatch("cart/removeItem", { uid, index })
       }
     },
     update: function(index, nums, remain_count) {
       if (this.checkQuantity(index, nums, remain_count)) {
-        let uid = 1;
+        let uid = 1
         this.$store.dispatch("cart/updateCartList", {
           uid,
           index,
           nums: parseInt(nums)
-        });
+        })
       }
     }
   }
-};
+}
 </script>

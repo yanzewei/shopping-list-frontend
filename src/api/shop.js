@@ -5,22 +5,22 @@ export default {
         axios
         .get(process.env.VUE_APP_HOSTNAME+"/api/shoplist/1")
         .then(response => {
-            cb(response.data.data);
+            cb(response.data.data)
         })
         .catch(error => {
-          console.log(error.response);
-        });
+          console.log(error.response)
+        })
     },
 
     getShoppingQuantity(cb){
         axios
         .get(process.env.VUE_APP_HOSTNAME+"/api/shopquantity/1")
         .then(response => {
-            cb(response.data.data.quantity);
+            cb(response.data.data.quantity)
         })
         .catch(error => {
-          console.log(error.response);
-        });
+          console.log(error.response)
+        })
     },
 
     updateShoppingCart(cart, cb) {
@@ -29,23 +29,23 @@ export default {
             process.env.VUE_APP_HOSTNAME+"/api/shoplist",
             cart
         )
-        .then(response => {
+        .then(() => {
             cb(cart.nums)
         })
         .catch(error => {
-            console.log(error.response);
-        });
+            console.log(error.response)
+        })
     },
     
     removeShoppingCart(cart, cb) {
         axios
         .delete(process.env.VUE_APP_HOSTNAME+"/api/shoplist", { data: cart })
-        .then(response => {
+        .then(() => {
             cb()
         })
         .catch(error => {
-            console.log(error.response);
-        });
+            console.log(error.response)
+        })
     },
     
     addShoppingCart(cart, cb) {
@@ -60,6 +60,6 @@ export default {
                 cb(error.response.status)
                 console.log(error.response)
             }
-        });
+        })
     }
 }

@@ -1,4 +1,4 @@
-import shop from "../../api/shop";
+import shop from "../../api/shop"
 import Vue from 'vue'
 
 
@@ -15,17 +15,17 @@ const state = {
     4 for success added.
   */
   status: [] 
-};
+}
 
 // getters
 const getters = {
-};
+}
 
 // actions
 const actions = {
   getCartList({ commit }) {
     shop.getShoppingCart(shopCart => {
-      commit("setCartlist", shopCart);
+      commit("setCartlist", shopCart)
       let subtotal = 0,
           quantity = 0
       for(let index in shopCart)
@@ -40,7 +40,7 @@ const actions = {
       }
       commit("setQuantity", quantity)
       commit('setSubtotal', subtotal)
-    });
+    })
   },
   
   getQuantity({ commit }) {
@@ -58,7 +58,7 @@ const actions = {
     cart.nums = nums
 
     commit('setUpdateStatus', {index:index, status:1})
-    shop.updateShoppingCart(cart, num => {
+    shop.updateShoppingCart(cart, () => {
       commit('setUpdateStatus', {index:index, status:0})
     }) 
   },
@@ -110,12 +110,12 @@ const actions = {
     commit("updateCart", {index, num})
     commit('setUpdateStatus', {index:index, status:2})
   }
-};
+}
 
 // mutations
 const mutations = {
   setCartlist(state, cartlist) {
-    state.cartlist = cartlist;
+    state.cartlist = cartlist
   },
   setQuantity(state, quantity) {
     state.quantity = quantity
@@ -133,7 +133,7 @@ const mutations = {
   setUpdateStatus(state, {index, status}){
     Vue.set(state.status, index, status)
   }
-};
+}
 
 export default {
   namespaced: true,
@@ -141,4 +141,4 @@ export default {
   getters,
   actions,
   mutations
-};
+}

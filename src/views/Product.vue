@@ -50,21 +50,23 @@
 <script>
 
 import { mapState } from 'vuex'
-import { isEmptyObject } from "../../src/util.js";
 export default {
   computed: mapState({
     products: state => state.products.all,
     status: state => state.cart.status
   }),
   created() {
-    this.$store.dispatch('products/getAllProducts', this.$route.params.title === undefined ? '' : this.$route.params.title)
+    this.$store.dispatch(
+      'products/getAllProducts', 
+      typeof(this.$route.params.title) == 'undefined' ? '' : this.$route.params.title
+    )
   },
   methods: {
-    add: function( nums, key, remain_count){
+    add: function(nums, key, remain_count){
       let uid = 1
-      this.$store.dispatch('cart/addItem', {uid,  nums, key, remain_count})
+      this.$store.dispatch('cart/addItem', {uid, nums, key, remain_count})
     }
   }
-};
+}
 </script>
 

@@ -31,41 +31,38 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 export default {
   computed: {
     search_text: {
       get() {
-        return this.$store.state.search.search_text;
+        return this.$store.state.search.search_text
       },
       set(value) {
-        this.$store.dispatch("search/setSearchText", value);
+        this.$store.dispatch("search/setSearchText", value)
       }
     },
     quantity: {
       get() {
-        return this.$store.state.cart.quantity;
+        return this.$store.state.cart.quantity
       }
     }
   },
   created() {
     this.$store.dispatch(
       "search/setSearchText",
-      this.$route.params.title === undefined ? "" : this.$route.params.title
-    );
-    this.$store.dispatch("cart/getQuantity");
+      typeof(this.$route.params.title) == 'undefined' ? "" : this.$route.params.title
+    )
+    this.$store.dispatch("cart/getQuantity")
   },
   methods: {
     search: function() {
-      this.$store.dispatch("search/setSearchText", this.search_text);
+      this.$store.dispatch("search/setSearchText", this.search_text)
       this.$router.push({
         name: "product-search-page",
         params: { title: this.search_text }
-      });
+      })
     }
   }
-};
+}
 </script>
 
-<style scoped>
-</style>
