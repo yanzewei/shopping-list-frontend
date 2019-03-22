@@ -28,6 +28,9 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-##Production setup
+## Production setup
+Enter the project root directory. Then execute the blow commands:
+```
 docker build . -t my-app
 docker run -d -p 8080:80 my-app
+```
