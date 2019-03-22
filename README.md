@@ -17,6 +17,6 @@ The product logic documentation can see the [product logic](https://github.com/y
 
 ## 🎉 Building And Deployment
 
-You may change the environment variables in the files: .env.devolopment or .env.production.
+You may change the environment variables in the files: `.env.devolopment` or `.env.production`.
 
 You can follow the setup step here [set up](https://github.com/yanzewei/shopping-list-frontend/blob/master/documents/SET_UP.md).
